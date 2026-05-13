@@ -1,0 +1,13 @@
+com/isrs/original/CallCounter.class
+com/isrs/original/Main.class
+com/isrs/original/UI.class
+com/isrs/original/Reviewer.class
+com/isrs/original/Benchmark.class
+com/isrs/original/Validator.class
+com/isrs/original/NotificationService.class
+com/isrs/original/ReviewerManager.class
+com/isrs/original/SubmissionController.class
+com/isrs/original/EvaluationManager.class
+com/isrs/original/Database.class
+com/isrs/original/ResearchOutput.class
+com/isrs/original/Score.class

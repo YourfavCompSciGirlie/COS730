@@ -1,0 +1,17 @@
+com/isrs/optimised/ReviewerRepository.class
+com/isrs/optimised/DecisionEngine.class
+com/isrs/optimised/Score.class
+com/isrs/optimised/Reviewer.class
+com/isrs/optimised/NotificationService.class
+com/isrs/optimised/ResearchOutput.class
+com/isrs/optimised/EvaluationOutcome.class
+com/isrs/optimised/Validator.class
+com/isrs/optimised/SubmissionRepository.class
+com/isrs/optimised/EvaluationService.class
+com/isrs/optimised/SubmissionController.class
+com/isrs/optimised/ScoreRepository.class
+com/isrs/optimised/ReviewAssignmentService.class
+com/isrs/optimised/Main.class
+com/isrs/optimised/CallCounter.class
+com/isrs/optimised/Benchmark.class
+com/isrs/optimised/UI.class
