@@ -3,6 +3,7 @@
 % ── Packages ──────────────────────────────────────────────────────────────
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -142,7 +143,7 @@ The baseline implementation faithfully reproduces the provided sequence diagram.
 
 \subsection{Participant-to-Class Mapping}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Mapping of sequence diagram participants to Java classes}
 \label{tab:participant-mapping}
@@ -320,7 +321,7 @@ Several issues in the baseline reflect poor behavioural modelling practices in t
 
 \subsection{Summary of Design Issues}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Summary of identified design issues in the baseline}
 \label{tab:design-issues}
@@ -352,10 +353,11 @@ All decision points in the system were identified and extracted into a single de
 
 \subsection{Decision Table}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Decision table for the ISRS evaluation logic}
 \label{tab:decision-table}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{c c c c c l}
     \toprule
     \textbf{Rule} & \textbf{C1: Valid?} & \textbf{C2: Avg $\geq$ 7.0?} & \textbf{C3: Consensus?} & \textbf{C4: Avg $<$ 5.0?} & \textbf{Action} \\
@@ -366,12 +368,13 @@ All decision points in the system were identified and extracted into a single de
     R4 & Y & Y   & N   & N   & \textbf{REVISION REQUIRED} \\
     R5 & Y & N   & --- & N   & \textbf{REVISION REQUIRED} \\
     \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Condition Definitions}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Condition definitions and their sources in the baseline}
 \label{tab:condition-defs}
@@ -426,7 +429,7 @@ The decision table consolidates all three locations into a single, self-containe
 
 Table~\ref{tab:rule-behaviour} maps each decision table rule to the concrete system behaviour it triggers, tracing the path from evaluation through notification.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Decision table rules mapped to system behaviour}
 \label{tab:rule-behaviour}
@@ -481,7 +484,7 @@ In the baseline, \texttt{Reviewer} directly calls \texttt{EvaluationManager.subm
 
 \subsection{Optimised Participant List}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Optimised sequence diagram participants}
 \label{tab:opt-participants}
@@ -531,7 +534,7 @@ Researcher -> UI : submitResearchOutput(data)
 
 The full PlantUML diagram is available at \texttt{Optimised/diagrams/optimised\_sequence.puml}. Figure~\ref{fig:opt-seq} shows the rendered diagram.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{optimised_sequence.png}
     \caption{Optimised ISRS sequence diagram}
@@ -540,7 +543,7 @@ The full PlantUML diagram is available at \texttt{Optimised/diagrams/optimised\_
 
 \subsection{Interaction Count Comparison}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Interaction count comparison between baseline and optimised diagrams}
 \label{tab:interaction-comparison}
@@ -586,7 +589,7 @@ The optimised implementation directly reflects the sequence diagram from Task~4.
 
 \subsection{Class Mapping}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Mapping between optimised and baseline classes}
 \label{tab:class-mapping}
@@ -694,7 +697,7 @@ Table~\ref{tab:opt-traceability} maps every forward message call in the optimise
 
 Both implementations produce identical outcomes for the same inputs:
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Functional equivalence verification}
 \label{tab:equivalence}
@@ -728,7 +731,7 @@ The benchmarks were run on \textbf{macOS} with \textbf{OpenJDK 21.0.10} (2026-01
 
 \subsubsection{Baseline --- 26 Total Method Calls}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Baseline method call counts for a single valid submission}
 \label{tab:baseline-calls}
@@ -762,7 +765,7 @@ The benchmarks were run on \textbf{macOS} with \textbf{OpenJDK 21.0.10} (2026-01
 
 \subsubsection{Optimised --- 13 Total Method Calls}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Optimised method call counts for a single valid submission}
 \label{tab:optimised-calls}
@@ -791,7 +794,7 @@ The benchmarks were run on \textbf{macOS} with \textbf{OpenJDK 21.0.10} (2026-01
 
 The optimised version reduces method calls by \textbf{50\%} (26 $\rightarrow$ 13). The key reductions are shown in Table~\ref{tab:call-reductions}.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Sources of method call reduction}
 \label{tab:call-reductions}
@@ -814,7 +817,7 @@ The optimised version reduces method calls by \textbf{50\%} (26 $\rightarrow$ 13
 
 \subsection{Execution Time}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Execution time comparison (1{,}000 runs after 100 warm-up)}
 \label{tab:timing}
@@ -846,7 +849,7 @@ The maximum time is higher for the optimised version (294{,}542 ns vs 229{,}125 
 
 \subsubsection{Lines of Code per Core Class}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Lines of code comparison (core classes only)}
 \label{tab:loc}
@@ -877,15 +880,16 @@ The optimised version has \textbf{22\% fewer total lines} despite having more cl
 
 \subsubsection{Constructor Dependencies (Efferent Coupling)}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Constructor dependency comparison}
 \label{tab:coupling}
-\begin{tabularx}{\textwidth}{l c X}
+\small
+\begin{tabularx}{\textwidth}{@{} p{4.5cm} p{4.5cm} X @{}}
     \toprule
     \textbf{Class} & \textbf{Baseline} & \textbf{Optimised} \\
     \midrule
-    SubmissionController & 4 & 5 (but focused services) \\
+    SubmissionController & 4 & 5 (focused services) \\
     ReviewerManager / ReviewAssignmentService & 1 & 1 \\
     EvaluationManager / EvaluationService & 2 (Database, NotificationService) & 2 (ScoreRepository, DecisionEngine) \\
     NotificationService & 0 & 0 \\
@@ -895,7 +899,7 @@ The optimised version has \textbf{22\% fewer total lines} despite having more cl
 
 \subsubsection{Maintainability Scenarios}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Impact analysis for common change scenarios}
 \label{tab:maintainability}
@@ -913,7 +917,7 @@ The optimised version has \textbf{22\% fewer total lines} despite having more cl
 
 \subsection{Evaluation Summary}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Overall empirical evaluation summary}
 \label{tab:eval-summary}
